@@ -33,7 +33,7 @@ const TextFieldGroup = ({
         disabled={disabled}
       />
       {info && (
-        <small className="form-text text-muted" style={{}}>
+        <small className="form-text" style={{}}>
           {info}
         </small>
       )}

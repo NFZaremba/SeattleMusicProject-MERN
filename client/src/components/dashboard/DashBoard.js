@@ -8,6 +8,7 @@ import ProfileActions from "./ProfileActions";
 import { AlertModal } from "../common/Modal";
 import Tab from "../common/Tabs";
 import IsEmpty from "../../validation/IsEmpty";
+import SideNav from "../common/SideNav";
 
 class Dashboard extends Component {
   componentDidMount() {
@@ -34,34 +35,30 @@ class Dashboard extends Component {
       if (Object.keys(profile).length > 0 || !IsEmpty(profile)) {
         dashboardContent = (
           <div>
-            <h1 className="display-4">
+            <h1 className="dashboardFont display-4">
               Dashboard{" "}
               <span className="lead text-muted">
                 Welcome{" "}
                 <Link to={`/profile/${profile.handle}`}>
                   {user.firstName} {user.lastName}
                 </Link>
+                <button
+                  className="btn btn-danger"
+                  data-toggle="modal"
+                  data-target="#deleteAccount"
+                >
+                  Delete My Account
+                </button>
               </span>
             </h1>
-
             <Tab profile={profile} />
-            {/* <ProfileActions /> */}
-
-            <div style={{ marginBottom: "60px" }} />
-            <button
-              className="btn btn-danger"
-              data-toggle="modal"
-              data-target="#deleteAccount"
-            >
-              Delete My Account
-            </button>
           </div>
         );
       } else {
         // User is logged in but has no profile and needs to create one
         dashboardContent = (
-          <div style={{ color: "white" }}>
-            <h1 className="display-4">Dashboard</h1>
+          <div>
+            <h1 className="dashboardFont display-4">Dashboard</h1>
             <p className="lead text-muted">
               Welcome {user.firstName} {user.lastName}
             </p>
@@ -74,13 +71,28 @@ class Dashboard extends Component {
       }
     }
 
+    const styles = {
+      navBar: {
+        paddingLeft: "0",
+        float: "left",
+        height: "160vh"
+      },
+      dashboardContent: {
+        paddingTop: "20px",
+        paddingRight: "20px",
+        float: "right"
+      }
+    };
+
     return (
       <div className="dashboard">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-12">{dashboardContent}</div>
-          </div>
+        <div className="col-md-4" style={styles.navBar}>
+          <SideNav />
         </div>
+        <div className="col-md-8" style={styles.dashboardContent}>
+          <div className="test">{dashboardContent}</div>
+        </div>
+
         <AlertModal
           id="deleteAccount"
           title="Delete"

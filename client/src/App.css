@@ -1,3 +1,11 @@
+@import url("https://fonts.googleapis.com/css?family=Amatic+SC|Bungee+Inline|Concert+One|Permanent+Marker|Righteous");
+
+@font-face {
+  font-family: "Bungee Inline", "Concert One", "Amatic SC", "Permanent Marker",
+    "Righteous", cursive;
+  src: url("https://fonts.googleapis.com/css?family=Amatic+SC|Bungee+Inline|Concert+One|Permanent+Marker|Righteous");
+}
+
 img {
   width: 100%;
 }
@@ -10,6 +18,10 @@ img {
   height: 100vh;
   margin-top: -24px;
   margin-bottom: -50px;
+}
+
+.landingHeader {
+  font-family: "Bungee Inline", cursive;
 }
 
 .landing-inner {
@@ -41,16 +53,34 @@ img {
 .dashboard,
 .creatWizard {
   position: relative;
-  background: url("./img/pp-attractions-pikeplace-compressed.jpg") no-repeat;
+  background: linear-gradient(
+      0deg,
+      rgba(44, 44, 44, 0.562),
+      rgba(59, 57, 58, 0.562)
+    ),
+    url("./img/pp-attractions-pikeplace-compressed.jpg") no-repeat;
   background-size: cover;
   background-position: center;
-  height: 200vh;
+  height: 160vh;
   margin-top: -24px;
   margin-bottom: -50px;
 }
 
+.test {
+  background: rgba(240, 240, 240, 0.774);
+  padding: 10px;
+  border-radius: 10px;
+}
+
 .create-profile,
 .add-music,
-.add-band {
-  background: rgba(0, 0, 0, 0.7);
+.add-band,
+.edit-profile {
+  background: rgba(170, 170, 170, 0.836);
+  font-family: "Permanent Marker", cursive;
+  color: black;
+}
+
+.dashboardFont {
+  font-family: "Concert One";
 }
