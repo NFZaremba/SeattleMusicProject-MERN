@@ -7,14 +7,16 @@ import Loading from "../common/Loading";
 import ProfileActions from "./ProfileActions";
 import { AlertModal } from "../common/Modal";
 import Tab from "../common/Tabs";
+import IsEmpty from "../../validation/IsEmpty";
 
 class Dashboard extends Component {
   componentDidMount() {
-    console.log(this.props.user);
+    console.log(this.props);
     this.props.getCurrentProfile();
   }
 
   onDeleteClick(e) {
+    e.preventDefault();
     this.props.deleteAccount();
   }
 
@@ -29,24 +31,27 @@ class Dashboard extends Component {
       dashboardContent = <Loading />;
     } else {
       // Check if logged in user has profile data
-      // if Object.keys of profile is greater than 0, then that means there is a profile
-      if (Object.keys(profile).length > 0) {
+      if (Object.keys(profile).length > 0 || !IsEmpty(profile)) {
         dashboardContent = (
           <div>
-            <p className="lead text-muted">
-              Welcome{" "}
-              <Link to={`/profile/${profile.handle}`}>
-                {user.firstName} {user.lastName}
-              </Link>
-            </p>
-            <ProfileActions />
+            <h1 className="display-4">
+              Dashboard{" "}
+              <span className="lead text-muted">
+                Welcome{" "}
+                <Link to={`/profile/${profile.handle}`}>
+                  {user.firstName} {user.lastName}
+                </Link>
+              </span>
+            </h1>
+
+            <Tab profile={profile} />
+            {/* <ProfileActions /> */}
 
             <div style={{ marginBottom: "60px" }} />
             <button
               className="btn btn-danger"
               data-toggle="modal"
               data-target="#deleteAccount"
-              onClick={this.onDeleteClick.bind(this)}
             >
               Delete My Account
             </button>
@@ -54,14 +59,14 @@ class Dashboard extends Component {
         );
       } else {
         // User is logged in but has no profile and needs to create one
-        // *** maybe create a modal for this ***
         dashboardContent = (
-          <div>
+          <div style={{ color: "white" }}>
+            <h1 className="display-4">Dashboard</h1>
             <p className="lead text-muted">
               Welcome {user.firstName} {user.lastName}
             </p>
             <p>You have not yet setup a profile, please add some info</p>
-            <Link to="/create-profile" className="btn btn-lg btn-info">
+            <Link to="/createWizard" className="btn btn-lg btn-info">
               Create profile
             </Link>
           </div>
@@ -73,11 +78,7 @@ class Dashboard extends Component {
       <div className="dashboard">
         <div className="container">
           <div className="row">
-            <div className="col-md-12">
-              <h1 className="display-4">Dashboard</h1>
-              <Tab />
-              {dashboardContent}
-            </div>
+            <div className="col-md-12">{dashboardContent}</div>
           </div>
         </div>
         <AlertModal
@@ -86,6 +87,7 @@ class Dashboard extends Component {
           body="Are you sure you want to delete? There is no turning back."
           dismiss="Cancel"
           action="Delete"
+          buttonType="btn btn-danger"
           actionFunction={this.onDeleteClick.bind(this)}
         />
       </div>

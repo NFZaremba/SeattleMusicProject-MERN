@@ -11,7 +11,6 @@ class Landing extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    // // if there are errors from incoming props, then set errors to the states
     if (nextProps.user.isAuthenticated) {
       this.props.history.push("/dashboard");
     }

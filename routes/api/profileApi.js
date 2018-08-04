@@ -14,7 +14,7 @@ const Profile = require("../../models/ProfileModel");
 const User = require("../../models/UserModel");
 
 // @route   api/profile
-// @desc    Get current users profile
+// @desc    Get current users profileatus
 // @access  Private route
 router.get(
   "/",
@@ -105,7 +105,6 @@ router.post(
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
     const { errors, isValid } = validateProfileInput(req.body);
-
     // Check validation
     if (!isValid) {
       // Return any errors with 400 status
@@ -118,9 +117,9 @@ router.post(
     const standardFields = [
       "handle",
       "company",
+      "status",
       "website",
       "location",
-      "status",
       "bio"
     ];
     const socialFields = [

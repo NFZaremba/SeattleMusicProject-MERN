@@ -50,10 +50,16 @@ export const getProfileByHandle = handle => dispatch => {
 };
 
 // Create Profile
-export const createProfile = (profileData, history) => dispatch => {
+export const createProfile = (profileData, sucess) => dispatch => {
   axios
     .post("/api/profile", profileData)
-    .then(res => history.push("/dashboard"))
+    .then(res => {
+      sucess,
+        dispatch({
+          type: GET_PROFILE,
+          payload: res.data // the actual profile
+        });
+    })
     .catch(err =>
       dispatch({
         type: GET_ERRORS,
@@ -63,9 +69,9 @@ export const createProfile = (profileData, history) => dispatch => {
 };
 
 // Add favoritemusic
-export const addMusic = (expData, history) => dispatch => {
+export const addMusic = (musicData, history) => dispatch => {
   axios
-    .post("/api/profile/favoritemusic", expData)
+    .post("/api/profile/favoritemusic", musicData)
     .then(res => history.push("/dashboard"))
     .catch(err => {
       dispatch({
@@ -76,10 +82,10 @@ export const addMusic = (expData, history) => dispatch => {
 };
 
 // Add band
-export const addBand = (eduData, history) => dispatch => {
+export const addBand = (bandData, sucess) => dispatch => {
   axios
-    .post("/api/profile/band", eduData)
-    .then(res => history.push("/dashboard"))
+    .post("/api/profile/band", bandData)
+    .then(sucess)
     .catch(err => {
       dispatch({
         type: GET_ERRORS,
