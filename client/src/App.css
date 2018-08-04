@@ -37,3 +37,20 @@ img {
 .form-control::placeholder {
   color: #bbb !important;
 }
+
+.dashboard,
+.creatWizard {
+  position: relative;
+  background: url("./img/pp-attractions-pikeplace-compressed.jpg") no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 200vh;
+  margin-top: -24px;
+  margin-bottom: -50px;
+}
+
+.create-profile,
+.add-music,
+.add-band {
+  background: rgba(0, 0, 0, 0.7);
+}

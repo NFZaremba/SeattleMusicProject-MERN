@@ -1,10 +1,12 @@
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
+import ProfileActions from "../dashboard/ProfileActions";
+import EditProfile from "../dashboard/EditProfile";
 
 function TabContainer(props) {
   return (
@@ -25,7 +27,7 @@ const styles = theme => ({
   }
 });
 
-class SimpleTabs extends React.Component {
+class SimpleTabs extends Component {
   state = {
     value: 0
   };
@@ -42,12 +44,16 @@ class SimpleTabs extends React.Component {
       <div className={classes.root}>
         <AppBar position="static">
           <Tabs value={value} onChange={this.handleChange}>
-            <Tab label="Item One" />
-            <Tab label="Item Two" />
-            <Tab label="Item Three" href="#basic-tabs" />
+            <Tab label="Edit Profile" />
+            <Tab label="Add Favorite Music" />
+            <Tab label="Add Band (optional)" />
           </Tabs>
         </AppBar>
-        {value === 0 && <TabContainer>Item One</TabContainer>}
+        {value === 0 && (
+          <TabContainer>
+            <EditProfile />
+          </TabContainer>
+        )}
         {value === 1 && <TabContainer>Item Two</TabContainer>}
         {value === 2 && <TabContainer>Item Three</TabContainer>}
       </div>

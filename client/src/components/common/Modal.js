@@ -7,7 +7,8 @@ export const AlertModal = ({
   dismiss,
   action,
   actionFunction,
-  body
+  body,
+  buttonType
 }) => {
   return (
     <div
@@ -22,7 +23,7 @@ export const AlertModal = ({
         <div className="modal-content">
           <div
             className="modal-header"
-            style={{ backgroundColor: "#212529", color: "white" }}
+            style={{ backgroundColor: "#007bff", color: "white" }}
           >
             <h5 className="modal-title" id="exampleModalLabel">
               {title}
@@ -36,7 +37,9 @@ export const AlertModal = ({
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div className="modal-body">{body}</div>
+          <div className="modal-body" style={{ color: "black" }}>
+            {body}
+          </div>
           <div className="modal-footer">
             <button
               type="button"
@@ -48,7 +51,7 @@ export const AlertModal = ({
             {action ? (
               <button
                 type="button"
-                className="btn btn-danger"
+                className={buttonType}
                 data-dismiss="modal"
                 onClick={actionFunction}
               >

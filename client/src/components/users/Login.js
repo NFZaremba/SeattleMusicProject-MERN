@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { loginUser, registerUser } from "../../actions/authActions";
 import InputField from "../common/InputField";
+import { AlertModal } from "../../components/common/Modal";
 
 class Login extends React.Component {
   constructor(props) {
@@ -22,11 +23,11 @@ class Login extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.onSubmitLogin = this.onSubmitLogin.bind(this);
     this.onSubmitRegister = this.onSubmitRegister.bind(this);
+    this.postRegister = this.postRegister.bind(this);
     //this.onChange = this.onChange.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
-    // // if there are errors from incoming props, then set errors to the states
     if (nextProps.errors) {
       this.setState((prevState, props) => ({
         errors: nextProps.errors
@@ -74,22 +75,16 @@ class Login extends React.Component {
     this.props.registerUser(newUser, this.props.history);
   }
 
-  //   showLoginForm() {
-  //     this.setState((prevState, props) => ({
-  //       ...this.state,
-  //       loginForm: true
-  //     }));
-  //     this.refreshForm();
-  //   }
-
-  //   showRegisterForm() {
-  //     console.log("hi");
-  //     this.setState((prevState, props) => ({
-  //       ...this.state,
-  //       loginForm: false
-  //     }));
-  //     this.refreshForm();
-  //   }
+  postRegister() {
+    //this.props.history.push("/");
+    this.setState(
+      (prevState, props) => ({
+        ...this.state,
+        loginForm: true
+      }),
+      this.refreshForm
+    );
+  }
 
   refreshForm() {
     this.setState((prevState, props) => ({
@@ -284,6 +279,8 @@ class Login extends React.Component {
                           backgroundColor: "#007bff",
                           color: "white"
                         }}
+                        data-toggle="modal"
+                        data-target="#register"
                         onClick={this.onSubmitRegister}
                       >
                         Register
@@ -314,6 +311,15 @@ class Login extends React.Component {
                 </div>
               </div> */}
             </div>
+            <AlertModal
+              id="register"
+              title="Success"
+              body="Thanks for registering. Please Login in!"
+              dismiss="Cancel"
+              action="Okay"
+              buttonType="btn btn-info"
+              actionFunction={this.postRegister}
+            />
           </div>
         </div>
       </div>
