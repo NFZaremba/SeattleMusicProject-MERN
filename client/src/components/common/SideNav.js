@@ -10,19 +10,27 @@ const SidebarExampleVisible = () => (
       inverted
       vertical
       visible
-      width="wide"
+      width="thin"
     >
-      <Menu.Item as="a">
+      <Menu.Item as="a" href="/artist">
         <Icon name="home" />
-        Home
+        Artists
       </Menu.Item>
-      <Menu.Item as="a">
+      <Menu.Item as="a" href="/events">
         <Icon name="gamepad" />
-        Games
+        Events
       </Menu.Item>
       <Menu.Item as="a">
         <Icon name="camera" />
-        Channels
+        Post Feed
+      </Menu.Item>
+      <Menu.Item as="a">
+        <Icon name="camera" />
+        Dashboard
+      </Menu.Item>
+      <Menu.Item as="a">
+        <Icon name="camera" />
+        Logout
       </Menu.Item>
     </Sidebar>
   </Sidebar.Pushable>
