@@ -7,31 +7,35 @@ import Loading from "../common/Loading";
 import ProfileActions from "./ProfileActions";
 import StepperInfo from "../common/Stepper";
 import IsEmpty from "../../validation/IsEmpty";
+import SideNav from "../common/SideNav";
 
 class CreateWizard extends Component {
   componentDidMount() {
     this.props.getCurrentProfile();
-    console.log(IsEmpty(this.props.profile));
-    // if (!IsEmpty(this.props.profile.profile.favoritemusic)) {
-    //   this.props.history.push("/dashboard");
-    // }
-  }
-
-  componentWillReceiveProps(nextProps) {
-    console.log(nextProps);
-    // if (!IsEmpty(nextProps.profile.profile.favoritemusic)) {
-    //   this.props.history.push("/dashboard");
-    // }
   }
 
   render() {
+    console.log(this.props);
+    const styles = {
+      navBar: {
+        paddingLeft: "0",
+        float: "left",
+        height: "160vh"
+      },
+      dashboardContent: {
+        paddingTop: "20px",
+        paddingRight: "20px",
+        float: "right"
+      }
+    };
+
     const { user } = this.props.user;
     const { profile, loading } = this.props.profile;
 
-    let dashboardContent;
+    let wizardContent;
 
     // User is logged in but has no profile and needs to create one
-    dashboardContent = (
+    wizardContent = (
       <div>
         <p className="lead text-muted">
           Welcome {user.firstName} {user.lastName}
@@ -42,10 +46,11 @@ class CreateWizard extends Component {
 
     return (
       <div className="creatWizard">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-12">{dashboardContent}</div>
-          </div>
+        <div className="col-md-2" style={styles.navBar}>
+          <SideNav />
+        </div>
+        <div className="row">
+          <div className="col-md-12">{wizardContent}</div>
         </div>
       </div>
     );

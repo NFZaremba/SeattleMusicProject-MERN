@@ -64,7 +64,7 @@ class StepperInfo extends Component {
       case 0:
         return "This is completed";
       case 1:
-        if (IsEmpty(this.props.profile.profile)) {
+        if (IsEmpty(this.props.profile)) {
           return <CreateProfile callBack={this.handleNext} />;
         } else {
           return "Completed!";
@@ -85,9 +85,11 @@ class StepperInfo extends Component {
   };
 
   render() {
+    console.log(this.props);
     const { classes } = this.props;
     const steps = this.getSteps();
     const { activeStep } = this.state;
+    const getSteps = this.getStepContent(activeStep);
 
     return (
       <div className={classes.root}>
@@ -114,7 +116,7 @@ class StepperInfo extends Component {
                 className={classes.instructions}
                 style={{ color: "white", fontSize: "20px" }}
               >
-                {this.getStepContent(activeStep)}
+                {getSteps}
               </Typography>
               <div>
                 <Button

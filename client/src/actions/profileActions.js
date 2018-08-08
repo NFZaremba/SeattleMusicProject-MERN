@@ -50,11 +50,11 @@ export const getProfileByHandle = handle => dispatch => {
 };
 
 // Create Profile
-export const createProfile = (profileData, sucess) => dispatch => {
+export const createProfile = (profileData, success) => dispatch => {
   axios
     .post("/api/profile", profileData)
     .then(res => {
-      sucess,
+      success,
         dispatch({
           type: GET_PROFILE,
           payload: res.data // the actual profile

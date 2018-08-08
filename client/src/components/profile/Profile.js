@@ -4,10 +4,10 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import Header from "./Header";
 import About from "./About";
-import ProfileGithub from "./ProfileGithub";
 import Music from "./Music";
-import Spinner from "../common/Spinner";
+import Loading from "../common/Loading";
 import { getProfileByHandle } from "../../actions/profileActions";
+import SideNav from "../common/SideNav";
 
 class Profile extends Component {
   componentDidMount() {
@@ -24,11 +24,25 @@ class Profile extends Component {
   }
 
   render() {
+    const styles = {
+      navBar: {
+        paddingLeft: "0",
+        float: "left",
+        height: "160vh"
+      },
+      dashboardContent: {
+        paddingTop: "20px",
+        paddingRight: "20px",
+        float: "right"
+      }
+    };
+
     const { profile, loading } = this.props.profile;
+
     let profileContent;
 
     if (profile === null || loading) {
-      profileContent = <Spinner />;
+      profileContent = <Loading />;
     } else {
       profileContent = (
         <div>
@@ -43,17 +57,20 @@ class Profile extends Component {
           {/* passing profile to components so we can use props */}
           <Header profile={profile} />
           <About profile={profile} />
-          <Music
-            education={profile.education}
-            experience={profile.experience}
-          />
+          <Music favoritemusic={profile.favoritemusic} band={profile.band} />
         </div>
       );
     }
     return (
-      <div className="container">
+      <div className="profile">
+        <div className="col-md-2" style={styles.navBar}>
+          <SideNav />
+        </div>
+
         <div className="row">
-          <div className="col-md-12">{profileContent}</div>
+          <div className="col-md-10" style={styles.dashboardContent}>
+            {profileContent}
+          </div>
         </div>
       </div>
     );

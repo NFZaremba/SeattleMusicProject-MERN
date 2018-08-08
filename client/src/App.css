@@ -51,7 +51,8 @@ img {
 }
 
 .dashboard,
-.creatWizard {
+.creatWizard,
+.profile {
   position: relative;
   background: linear-gradient(
       0deg,
@@ -66,12 +67,6 @@ img {
   margin-bottom: -50px;
 }
 
-.test {
-  background: rgba(240, 240, 240, 0.774);
-  padding: 10px;
-  border-radius: 10px;
-}
-
 .create-profile,
 .add-music,
 .add-band,
@@ -83,4 +78,13 @@ img {
 
 .dashboardFont {
   font-family: "Concert One";
+  color: white;
+}
+
+div.pushable {
+  width: 60%;
+}
+
+.card {
+  background: rgb(3, 0, 204);
 }

@@ -14,6 +14,8 @@ import Footer from "./components/layout/Footer";
 import Landing from "./components/layout/Landing";
 import Dashboard from "./components/dashboard/DashBoard";
 import CreateWizard from "./components/dashboard/createWizard";
+import Profile from "./components/profile/Profile";
+import NotFound from "./components/users/NotFound";
 
 import { clearCurrentProfile } from "./actions/profileActions";
 
@@ -47,6 +49,7 @@ class App extends Component {
             <Navbar />
             <Switch>
               <Route exact path="/" component={Landing} />
+              <Route exact path="/profile/:handle" component={Profile} />
               <PrivateRoute
                 exact
                 path="/dashboard"
@@ -59,6 +62,7 @@ class App extends Component {
                 component={CreateWizard}
                 requiredRole={"user"}
               />
+              <Route exact component={NotFound} />
             </Switch>
             <Footer />
           </div>

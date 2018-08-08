@@ -86,11 +86,13 @@ class Dashboard extends Component {
 
     return (
       <div className="dashboard">
-        <div className="col-md-4" style={styles.navBar}>
+        <div className="col-md-2" style={styles.navBar}>
           <SideNav />
         </div>
-        <div className="col-md-8" style={styles.dashboardContent}>
-          <div className="test">{dashboardContent}</div>
+        <div className="row">
+          <div className="col-md-10" style={styles.dashboardContent}>
+            <div className="test">{dashboardContent}</div>
+          </div>
         </div>
 
         <AlertModal
