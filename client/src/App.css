@@ -82,7 +82,7 @@ img {
 }
 
 div.pushable {
-  width: 60%;
+  width: auto;
 }
 
 .card {
