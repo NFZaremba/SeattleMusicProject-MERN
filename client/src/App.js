@@ -15,6 +15,7 @@ import Landing from "./components/layout/Landing";
 import Dashboard from "./components/dashboard/DashBoard";
 import CreateWizard from "./components/dashboard/createWizard";
 import Profile from "./components/profile/Profile";
+import Profiles from "./components/profile/Profiles";
 import NotFound from "./components/users/NotFound";
 
 import { clearCurrentProfile } from "./actions/profileActions";
@@ -50,6 +51,7 @@ class App extends Component {
             <Switch>
               <Route exact path="/" component={Landing} />
               <Route exact path="/profile/:handle" component={Profile} />
+              <Route exact path="/profiles" component={Profiles} />
               <PrivateRoute
                 exact
                 path="/dashboard"

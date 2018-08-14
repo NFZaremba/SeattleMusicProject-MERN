@@ -19,19 +19,19 @@ export default function(state = initialState, action) {
     case PROFILE_LOADING:
       return {
         ...state,
-        loading: true // show loading spinner
+        loading: true
       };
     case GET_PROFILE:
       return {
         ...state,
-        profile: action.payload, // profile
-        loading: false // hide loading spinner
+        profile: action.payload,
+        loading: false
       };
     case GET_PROFILES:
       return {
         ...state,
-        profiles: action.payload, // profile
-        loading: false // hide loading spinner
+        profiles: action.payload,
+        loading: false
       };
     case CLEAR_CURRENT_PROFILE:
       return {

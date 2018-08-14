@@ -1,12 +1,10 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { getCurrentProfile } from "../../actions/profileActions";
 import Loading from "../common/Loading";
 import ProfileActions from "./ProfileActions";
 import StepperInfo from "../common/Stepper";
-import IsEmpty from "../../validation/IsEmpty";
 import SideNav from "../common/SideNav";
 
 class CreateWizard extends Component {
@@ -15,20 +13,6 @@ class CreateWizard extends Component {
   }
 
   render() {
-    console.log(this.props);
-    const styles = {
-      navBar: {
-        paddingLeft: "0",
-        float: "left",
-        height: "160vh"
-      },
-      dashboardContent: {
-        paddingTop: "20px",
-        paddingRight: "20px",
-        float: "right"
-      }
-    };
-
     const { user } = this.props.user;
     const { profile, loading } = this.props.profile;
 
@@ -43,6 +27,19 @@ class CreateWizard extends Component {
         <StepperInfo profile={profile} />
       </div>
     );
+
+    const styles = {
+      navBar: {
+        paddingLeft: "0",
+        float: "left",
+        height: "160vh"
+      },
+      dashboardContent: {
+        paddingTop: "20px",
+        paddingRight: "20px",
+        float: "right"
+      }
+    };
 
     return (
       <div className="creatWizard">

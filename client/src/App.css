@@ -52,7 +52,8 @@ img {
 
 .dashboard,
 .creatWizard,
-.profile {
+.profile,
+.profiles {
   position: relative;
   background: linear-gradient(
       0deg,
@@ -86,5 +87,5 @@ div.pushable {
 }
 
 .card {
-  background: rgb(3, 0, 204);
+  background: rgba(0, 123, 255, 0.932);
 }

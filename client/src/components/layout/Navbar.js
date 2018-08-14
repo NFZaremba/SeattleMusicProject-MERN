@@ -2,28 +2,8 @@ import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { logoutUser } from "../../actions/authActions";
-import { clearCurrentProfile } from "../../actions/profileActions";
 
 class Navbar extends Component {
-  onLogoutClick(e) {
-    e.preventDefault();
-    // Logout of facebook
-    // document.addEventListener(
-    //   "FBObjectLogout",
-    //   window.FB.XFBML.parse(
-    //     window.FB.logout(function(response) {
-    //       console.log("signed out of facebook");
-    //     })
-    //   )
-    // );
-
-    //clear profile user - set redux state profile to null
-    this.props.clearCurrentProfile();
-    // logout user
-    this.props.logoutUser(this.props.history);
-  }
-
   render() {
     const { isAuthenticated, user } = this.props.user;
 
@@ -48,22 +28,6 @@ class Navbar extends Component {
           <Link className="nav-link" to="/dashboard">
             Dashboard
           </Link>
-        </li>
-        <li className="nav-item">
-          <a
-            href=""
-            onClick={this.onLogoutClick.bind(this)}
-            className="nav-link"
-          >
-            {/* <img
-              className="rounded-circle"
-              src={user.avatar}
-              alt={user.name}
-              title="You must have a Gravitar connected to your email to display an image"
-              style={{ width: "25px", marginRight: "5px" }}
-            /> */}
-            Logout
-          </a>
         </li>
       </ul>
     );
@@ -118,7 +82,6 @@ class Navbar extends Component {
 }
 
 Navbar.propTypes = {
-  logoutUser: PropTypes.func.isRequired,
   user: PropTypes.object.isRequired
 };
 
@@ -126,7 +89,4 @@ const mapStateToProps = state => ({
   user: state.user
 });
 
-export default connect(
-  mapStateToProps,
-  { logoutUser, clearCurrentProfile }
-)(withRouter(Navbar));
+export default connect(mapStateToProps)(withRouter(Navbar));

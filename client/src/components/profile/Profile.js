@@ -12,7 +12,6 @@ import SideNav from "../common/SideNav";
 class Profile extends Component {
   componentDidMount() {
     if (this.props.match.params.handle) {
-      console.log(this.props);
       this.props.getProfileByHandle(this.props.match.params.handle);
     }
   }
