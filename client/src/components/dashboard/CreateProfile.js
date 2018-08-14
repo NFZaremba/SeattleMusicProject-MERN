@@ -60,6 +60,7 @@ class CreateProfile extends Component {
   }
 
   onSubmit_Success() {
+    console.log("test");
     this.props.callBack();
   }
 

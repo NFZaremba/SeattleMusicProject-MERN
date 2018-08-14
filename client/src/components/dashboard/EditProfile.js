@@ -69,47 +69,6 @@ class EditProfile extends Component {
     }
   }
 
-  //   componentWillReceiveProps(nextProps) {
-  //     console.log(nextProps);
-  //     if (nextProps.errors) {
-  //       this.setState({ errors: nextProps.errors });
-  //     }
-
-  //     if (nextProps.profile.profile) {
-  //       const profile = nextProps.profile.profile;
-  //       console.log(profile.company);
-  //       // take array join it into a string
-  //       const instrumentsArr = profile.instruments.join(",");
-
-  //       // if profile field doesn't exist, make empty string
-  //       profile.company = !IsEmpty(profile.company) ? profile.company : "";
-  //       profile.website = !IsEmpty(profile.website) ? profile.website : "";
-  //       profile.location = !IsEmpty(profile.location) ? profile.location : "";
-  //       profile.bio = !IsEmpty(profile.bio) ? profile.bio : "";
-  //       profile.social = !IsEmpty(profile.social) ? profile.social : {};
-  //       profile.facebook = !IsEmpty(profile.facebook) ? profile.facebook : "";
-  //       profile.linkedin = !IsEmpty(profile.linkedin) ? profile.linkedin : "";
-  //       profile.youtube = !IsEmpty(profile.youtube) ? profile.youtube : "";
-  //       profile.instagram = !IsEmpty(profile.instagram) ? profile.instagram : "";
-
-  //       // Set component  fields state
-  //       this.setState({
-  //         handle: profile.handle,
-  //         company: profile.company,
-  //         website: profile.website,
-  //         location: profile.location,
-  //         status: profile.status,
-  //         instruments: instrumentsArr,
-  //         bio: profile.bio,
-  //         twitter: profile.social.twitter,
-  //         facebook: profile.social.facebook,
-  //         linkedin: profile.social.linkedin,
-  //         youtube: profile.social.youtube,
-  //         instagram: profile.social.instagram
-  //       });
-  //     }
-  //   }
-
   onSubmit(e) {
     e.preventDefault();
 
@@ -201,13 +160,11 @@ class EditProfile extends Component {
     ];
 
     return (
-      <div className="create-profile">
+      <div className="edit-profile">
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
-              <h1 className="display-4 text-center" style={{ color: "white" }}>
-                Edit Profile
-              </h1>
+              <h1 className="display-4 text-center">Edit Profile</h1>
               <small className="d-block pb-3">* = required fields</small>
               <form onSubmit={this.onSubmit}>
                 <TextField

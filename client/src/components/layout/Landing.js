@@ -23,7 +23,11 @@ class Landing extends Component {
           <div className="container">
             <div className="row">
               <div className="col-md-12 text-center">
-                <h1 className="display-3 mb-4">Seattle Music</h1>
+                <h1 className="landingHeader display-3 mb-4">
+                  <span style={{ color: "green" }}>S</span>
+                  <span style={{ color: "blue" }}>eattle</span>
+                  <span style={{ color: "grey" }}> Music</span>
+                </h1>
                 <p className="lead">
                   Create a profile/portfolio, share posts, music and connect
                   with others who share the same passion.

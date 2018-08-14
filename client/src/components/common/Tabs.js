@@ -7,6 +7,8 @@ import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import ProfileActions from "../dashboard/ProfileActions";
 import EditProfile from "../dashboard/EditProfile";
+import AddMusic from "../dashboard/Music/AddMusic";
+import AddBand from "../dashboard/Music/AddBand";
 
 function TabContainer(props) {
   return (
@@ -42,20 +44,28 @@ class SimpleTabs extends Component {
 
     return (
       <div className={classes.root}>
-        <AppBar position="static">
+        <AppBar position="static" style={{ background: "rgb(3, 0, 204)" }}>
           <Tabs value={value} onChange={this.handleChange}>
             <Tab label="Edit Profile" />
-            <Tab label="Add Favorite Music" />
-            <Tab label="Add Band (optional)" />
+            <Tab label="Edit Favorite Music" />
+            <Tab label="Edit Band Info" />
           </Tabs>
         </AppBar>
         {value === 0 && (
-          <TabContainer>
+          <TabContainer style={{ background: "black" }}>
             <EditProfile />
           </TabContainer>
         )}
-        {value === 1 && <TabContainer>Item Two</TabContainer>}
-        {value === 2 && <TabContainer>Item Three</TabContainer>}
+        {value === 1 && (
+          <TabContainer>
+            <AddMusic />
+          </TabContainer>
+        )}
+        {value === 2 && (
+          <TabContainer>
+            <AddBand />
+          </TabContainer>
+        )}
       </div>
     );
   }
