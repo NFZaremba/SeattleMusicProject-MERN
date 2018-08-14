@@ -5,7 +5,7 @@ import AppBar from "@material-ui/core/AppBar";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
-import ProfileActions from "../dashboard/ProfileActions";
+//import ProfileActions from "../dashboard/ProfileActions";
 import EditProfile from "../dashboard/EditProfile";
 import AddMusic from "../dashboard/Music/AddMusic";
 import AddBand from "../dashboard/Music/AddBand";

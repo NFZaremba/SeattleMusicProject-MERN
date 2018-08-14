@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import { logoutUser } from "../../actions/authActions";
 import { clearCurrentProfile } from "../../actions/profileActions";
 
-import { Header, Icon, Image, Menu, Segment, Sidebar } from "semantic-ui-react";
+import { Icon, Menu, Sidebar } from "semantic-ui-react";
 
 class SideNav extends Component {
   onLogoutClick(e) {
@@ -50,7 +50,7 @@ class SideNav extends Component {
             <Icon name="address book" />
             Profiles
           </Menu.Item>
-          <Menu.Item as="a">
+          <Menu.Item as="a" href="/feed">
             <Icon name="comment alternate" />
             Post Feed
           </Menu.Item>

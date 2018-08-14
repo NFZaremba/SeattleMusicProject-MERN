@@ -11,8 +11,13 @@ const PostSchema = new Schema({
     type: String,
     required: true
   },
-  name: {
-    type: String
+  firstName: {
+    type: String,
+    required: true
+  },
+  lastName: {
+    type: String,
+    required: true
   },
   avatar: {
     type: String

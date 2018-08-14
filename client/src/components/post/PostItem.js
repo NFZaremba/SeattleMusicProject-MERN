@@ -15,12 +15,12 @@ class PostItem extends Component {
   }
 
   unLikeClick(id) {
-    thisprops.removeLike(id);
+    this.props.removeLike(id);
   }
 
   findUserLike(likes) {
-    const { auth } = this.props;
-    if (likes.filter(like => like.user === auth.user.id).length > 0) {
+    const { user } = this.props;
+    if (likes.filter(like => like.user === user.user.id).length > 0) {
       // if user liked post
       return true;
     } else {
@@ -29,7 +29,8 @@ class PostItem extends Component {
   }
 
   render() {
-    const { post, auth, showActions } = this.props;
+    const { post, user, showActions } = this.props;
+    console.log(post);
     return (
       <div className="card card-body mb-3">
         <div className="row">
@@ -42,7 +43,9 @@ class PostItem extends Component {
               />
             </a>
             <br />
-            <p className="text-center">{post.name}</p>
+            <p className="text-center">
+              {post.firstName} {post.lastName}
+            </p>
           </div>
           <div className="col-md-10">
             <p className="lead">{post.text}</p>
@@ -71,8 +74,8 @@ class PostItem extends Component {
                 <Link to={`/post/${post._id}`} className="btn btn-info mr-1">
                   Comments
                 </Link>
-                {/* if user post is equal to auth user id then show delete button */}
-                {post.user === auth.user.id ? (
+                {/* if user post is equal to user user id then show delete button */}
+                {post.user === user.user.id ? (
                   <button
                     type="button"
                     className="btn btn-danger mr-1"
@@ -90,20 +93,19 @@ class PostItem extends Component {
   }
 }
 
-ProfileItem.propTypes = {
+PostItem.propTypes = {
   deletePost: PropTypes.func.isRequired,
   addLike: PropTypes.func.isRequired,
   removeLike: PropTypes.func.isRequired,
-  post: PropTypes.object,
-  isRequired,
-  auth: PropTypes.object.isRequired
+  post: PropTypes.object.isRequired,
+  user: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
-  auth: state.auth
+  user: state.user
 });
 
 export default connect(
   mapStateToProps,
   { deletePost, addLike, removeLike }
-)(ProfileItem);
+)(PostItem);

@@ -5,3 +5,50 @@ import PostForm from "./PostForm";
 import PostFeed from "./PostFeed";
 import Loading from "../common/Loading";
 import { getPosts } from "../../actions/postActions";
+
+class Posts extends Component {
+  componentDidMount() {
+    // Get posts
+    this.props.getPosts();
+  }
+
+  render() {
+    console.log(this.props);
+    const { posts, loading } = this.props.post;
+    let postContent;
+
+    if (posts === null || loading) {
+      postContent = <Loading />;
+    } else {
+      console.log(posts);
+      postContent = <PostFeed posts={posts} />;
+    }
+
+    return (
+      <div className="feed">
+        <div className="container">
+          <div className="row">
+            <div className="col-md-12">
+              <PostForm />
+              {postContent}
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
+
+Posts.propTypes = {
+  getPosts: PropTypes.func.isRequired,
+  post: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+  post: state.post
+});
+
+export default connect(
+  mapStateToProps,
+  { getPosts }
+)(Posts);

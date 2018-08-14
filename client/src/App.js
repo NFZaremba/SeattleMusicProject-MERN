@@ -16,6 +16,7 @@ import Dashboard from "./components/dashboard/DashBoard";
 import CreateWizard from "./components/dashboard/createWizard";
 import Profile from "./components/profile/Profile";
 import Profiles from "./components/profile/Profiles";
+import Posts from "./components/post/Posts";
 import NotFound from "./components/users/NotFound";
 
 import { clearCurrentProfile } from "./actions/profileActions";
@@ -64,6 +65,18 @@ class App extends Component {
                 component={CreateWizard}
                 requiredRole={"user"}
               />
+              <PrivateRoute
+                exact
+                path="/feed"
+                component={Posts}
+                requiredRole={"user"}
+              />
+              {/* <PrivateRoute
+                exact
+                path="/post/:id"
+                component={Post}
+                requiredRole={"user"}
+              /> */}
               <Route exact component={NotFound} />
             </Switch>
             <Footer />

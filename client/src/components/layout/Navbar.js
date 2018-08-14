@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 
 class Navbar extends Component {
   render() {
-    const { isAuthenticated, user } = this.props.user;
+    const { isAuthenticated } = this.props.user;
 
     const authLinks = (
       <ul className="navbar-nav ml-auto">
