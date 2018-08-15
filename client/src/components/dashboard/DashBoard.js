@@ -42,15 +42,16 @@ class Dashboard extends Component {
                 <Link to={`/profile/${profile.handle}`}>
                   {user.firstName} {user.lastName}
                 </Link>
-                <button
-                  className="btn btn-danger"
-                  data-toggle="modal"
-                  data-target="#deleteAccount"
-                >
-                  Delete My Account
-                </button>
               </span>
             </h1>
+            <button
+              style={{ marginBottom: "10px" }}
+              className="btn btn-danger"
+              data-toggle="modal"
+              data-target="#deleteAccount"
+            >
+              Delete My Account
+            </button>
             <Tab profile={profile} />
           </div>
         );

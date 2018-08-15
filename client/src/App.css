@@ -52,7 +52,10 @@ img {
 
 .dashboard,
 .creatWizard,
-.profile {
+.profile,
+.profiles,
+.feed,
+.commentPost {
   position: relative;
   background: linear-gradient(
       0deg,
@@ -86,5 +89,14 @@ div.pushable {
 }
 
 .card {
-  background: rgb(3, 0, 204);
+  background: rgba(255, 255, 255, 0.932);
+}
+
+.postCard,
+.cardHead {
+  background-color: #f1f1f1d7;
+}
+
+.commentCard {
+  background-color: #a3a3a3ee;
 }

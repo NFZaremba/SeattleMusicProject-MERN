@@ -34,7 +34,9 @@ class CreateProfile extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.errors) {
-      this.setState({ errors: nextProps.errors });
+      this.setState((prevState, props) => ({
+        errors: nextProps.errors
+      }));
     }
   }
 
@@ -60,7 +62,6 @@ class CreateProfile extends Component {
   }
 
   onSubmit_Success() {
-    console.log("test");
     this.props.callBack();
   }
 
@@ -69,7 +70,6 @@ class CreateProfile extends Component {
   }
 
   render() {
-    // destructoring
     const { errors, displaySocialInputs } = this.state;
 
     let socialInputs;

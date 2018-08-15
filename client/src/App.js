@@ -15,6 +15,9 @@ import Landing from "./components/layout/Landing";
 import Dashboard from "./components/dashboard/DashBoard";
 import CreateWizard from "./components/dashboard/createWizard";
 import Profile from "./components/profile/Profile";
+import Profiles from "./components/profile/Profiles";
+import Posts from "./components/post/Posts";
+import CommentPost from "./components/comment/CommentPost";
 import NotFound from "./components/users/NotFound";
 
 import { clearCurrentProfile } from "./actions/profileActions";
@@ -30,6 +33,7 @@ if (localStorage.jwtToken) {
 
   // Check for expired token to logout user out
   const currentTime = Date.now() / 1000;
+
   if (decoded.exp < currentTime) {
     // if token is expired then logout User
     store.dispatch(logoutUser());
@@ -50,6 +54,7 @@ class App extends Component {
             <Switch>
               <Route exact path="/" component={Landing} />
               <Route exact path="/profile/:handle" component={Profile} />
+              <Route exact path="/profiles" component={Profiles} />
               <PrivateRoute
                 exact
                 path="/dashboard"
@@ -60,6 +65,18 @@ class App extends Component {
                 exact
                 path="/createWizard"
                 component={CreateWizard}
+                requiredRole={"user"}
+              />
+              <PrivateRoute
+                exact
+                path="/feed"
+                component={Posts}
+                requiredRole={"user"}
+              />
+              <PrivateRoute
+                exact
+                path="/post/:id"
+                component={CommentPost}
                 requiredRole={"user"}
               />
               <Route exact component={NotFound} />
