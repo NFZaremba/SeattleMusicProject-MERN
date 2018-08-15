@@ -5,6 +5,8 @@ import classnames from "classnames";
 import { Link } from "react-router-dom";
 import { deletePost, addLike, removeLike } from "../../actions/postActions";
 
+import { Icon } from "semantic-ui-react";
+
 class PostItem extends Component {
   onDeleteClick(id) {
     this.props.deletePost(id);
@@ -32,20 +34,13 @@ class PostItem extends Component {
     const { post, user, showActions } = this.props;
 
     return (
-      <div className="card card-body mb-3">
+      <div className="card card-body mb-3 postCard">
         <div className="row">
           <div className="col-md-2">
-            <a href="profile.html">
-              <img
-                className="rounded-circle d-none d-md-block"
-                src={post.avatar}
-                alt=""
-              />
-            </a>
-            <br />
-            <p className="text-center">
+            <p>
               {post.firstName} {post.lastName}
             </p>
+            <Icon size="huge" name="user circle" />
           </div>
           <div className="col-md-10">
             <p className="lead">{post.text}</p>

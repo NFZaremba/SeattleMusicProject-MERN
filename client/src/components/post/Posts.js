@@ -42,6 +42,12 @@ class Posts extends Component {
         </div>
         <div className="row">
           <div className="col-md-10" style={styles.content}>
+            <h1 className="display-4 text-center" style={{ color: "white" }}>
+              Post Feed
+            </h1>
+            <p className="lead text-center" style={{ color: "white" }}>
+              Connect with other members
+            </p>
             <PostForm />
             {postContent}
           </div>

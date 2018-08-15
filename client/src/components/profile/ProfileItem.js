@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import isEmpty from "../../validation/IsEmpty";
 
+import { Icon } from "semantic-ui-react";
+
 class ProfileItem extends Component {
   render() {
     console.log("test");
@@ -11,10 +13,9 @@ class ProfileItem extends Component {
     return (
       <div className="card card-body bt-light mb-3">
         <div className="row">
-          <div className="col-2">
-            <img src={profile.user.avatar} alt="" className="rounded-circle" />
-          </div>
-          <div className="col-lg-6 col-md-4 col-8">
+          <Icon size="massive" name="user circle" />
+
+          <div className="col-md-2">
             <h3>
               {profile.user.firstName} {profile.user.lastName}
             </h3>
@@ -43,6 +44,31 @@ class ProfileItem extends Component {
                   <i className="fa fa-check pr-1" />
                   {music}
                 </li>
+              ))}
+            </ul>
+          </div>
+          <div className="col-md-4 d-none-block">
+            <h4>Favorite Music</h4>
+            <ul className="list-group">
+              {profile.favoritemusic.map((music, index) => (
+                <div key={index}>
+                  <li className="list-group-item">
+                    <i className="fa fa-check pr-1" />
+                    {music.song}
+                  </li>
+                  <li className="list-group-item">
+                    <i className="fa fa-check pr-1" />
+                    {music.album}
+                  </li>
+                  <li className="list-group-item">
+                    <i className="fa fa-check pr-1" />
+                    {music.artist}
+                  </li>
+                  <li className="list-group-item">
+                    <i className="fa fa-check pr-1" />
+                    {music.genre}
+                  </li>
+                </div>
               ))}
             </ul>
           </div>

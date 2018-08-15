@@ -11,6 +11,9 @@ class CommentForm extends Component {
       text: "",
       errors: {}
     };
+
+    this.onChange = this.onChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
   componentWillReceiveProps(newProps) {
@@ -20,20 +23,36 @@ class CommentForm extends Component {
       }));
     }
   }
+  onChange(e) {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  }
 
   onSubmit(e) {
     e.preventDefault();
 
     const { user } = this.props.user;
-    const { poastId } = this.props;
+    const { postId } = this.props;
 
     const newComment = {
       text: this.state.text,
       firstName: user.firstName,
       lastName: user.lastName
     };
+
+    // dispatch form data
+    this.props.addComment(postId, newComment);
+    // clear form
+    this.setState((prevState, props) => ({
+      text: "",
+      errors: {}
+    }));
   }
+
   render() {
+    const { errors } = this.state;
+
     return (
       <div className="post-form mb-3">
         <div className="card card-info">
@@ -43,7 +62,7 @@ class CommentForm extends Component {
           <div className="card-body">
             <form onSubmit={this.onSubmit}>
               <div className="form-group">
-                <TextAreaFieldGroup
+                <TextAreaField
                   placeholder="reply to a post"
                   name="text"
                   value={this.state.text}
@@ -61,3 +80,20 @@ class CommentForm extends Component {
     );
   }
 }
+
+CommentForm.propTypes = {
+  addComment: PropTypes.func.isRequired,
+  user: PropTypes.object.isRequired,
+  postId: PropTypes.string.isRequired,
+  errors: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+  user: state.user,
+  errors: state.errors
+});
+
+export default connect(
+  mapStateToProps,
+  { addComment }
+)(CommentForm);
