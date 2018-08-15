@@ -2,8 +2,9 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { loginUser, registerUser } from "../../actions/authActions";
+import { loginUser, registerUser, fbLogin } from "../../actions/authActions";
 import InputField from "../common/InputField";
+import FacebookLogin from "./FacebookLogin";
 
 class Login extends React.Component {
   constructor(props) {
@@ -25,6 +26,7 @@ class Login extends React.Component {
     this.onSubmitRegister = this.onSubmitRegister.bind(this);
     this.postRegister = this.postRegister.bind(this);
     this.onSubmitRegister_Success = this.onSubmitRegister_Success.bind(this);
+    this.onFacebookSignin = this.onFacebookSignin.bind(this);
     //this.onChange = this.onChange.bind(this);
   }
 
@@ -116,7 +118,8 @@ class Login extends React.Component {
   }
 
   onFacebookSignin(fbUser) {
-    this.props.thirdparty(fbUser);
+    console.log(fbUser);
+    this.props.fbLogin(fbUser);
   }
 
   render() {
@@ -305,8 +308,8 @@ class Login extends React.Component {
           </div>
 
           {/* THIRD PARTY LOGINS */}
-          {/* <div style={{ paddingBottom: "10px" }}>
-                <div style={{ paddingBottom: "10px" }}>
+          <div style={{ paddingBottom: "10px" }}>
+            {/* <div style={{ paddingBottom: "10px" }}>
                   <LinkedInSignIn />
                 </div>
                 <div style={{ paddingBottom: "10px" }}>
@@ -316,11 +319,11 @@ class Login extends React.Component {
                     onSuccess={this.onGoogleSignIn}
                     width="510"
                   />
-                </div>
-                <div style={{ paddingBottom: "10px" }}>
-                  <FacebookLogin onSuccess={this.onFacebookSignin} />
-                </div>
-              </div> */}
+                </div> */}
+            <div style={{ paddingBottom: "10px" }}>
+              <FacebookLogin onSuccess={this.onFacebookSignin} />
+            </div>
+          </div>
         </div>
       );
     } else {
@@ -356,8 +359,10 @@ class Login extends React.Component {
 }
 
 Login.propTypes = {
-  user: PropTypes.object.isRequired
-  //thirdparty: PropTypes.func.isRequired
+  user: PropTypes.object.isRequired,
+  loginUser: PropTypes.func.isRequired,
+  registerUser: PropTypes.func.isRequired,
+  fbLogin: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => {
@@ -369,5 +374,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { loginUser, registerUser }
+  { loginUser, registerUser, fbLogin }
 )(withRouter(Login));

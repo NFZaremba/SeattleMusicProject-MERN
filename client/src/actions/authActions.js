@@ -19,24 +19,20 @@ export const registerUser = (newUser, success) => dispatch => {
     );
 };
 
-// export const fbLogin = newUser => dispatch => {
-//   let fbUser = {
-//     email: newUser.email,
-//     password: newUser.password
-//   };
-//   axios
-//     .post("/api/users/register", newUser)
-//     .then(res => {
-//       dispatch(loginUser(fbUser));
-//     })
-//     .catch(err =>
-//       // dispatch errors to reducer to be accessed from the redux state
-//       dispatch({
-//         type: GET_ERRORS,
-//         payload: err.response.data
-//       })
-//     );
-// };
+export const fbLogin = newUser => dispatch => {
+  let fbUser = {
+    email: newUser.email,
+    password: newUser.password
+  };
+  axios
+    .post("/api/users/register", newUser)
+    .then(res => {
+      dispatch(loginUser(fbUser));
+    })
+    .catch(err => {
+      dispatch(loginUser(fbUser));
+    });
+};
 
 // Login User - Get user token
 export const loginUser = (userData, history) => dispatch => {
