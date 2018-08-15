@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import TextField from "../common/TextField";
 import TextAreaField from "../common/TextAreaField";
@@ -34,7 +34,6 @@ class EditProfile extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props);
     if (this.props.profile.profile) {
       const profile = this.props.profile.profile;
       // take array join it into a string

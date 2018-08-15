@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { getCurrentProfile, deleteAccount } from "../../actions/profileActions";
 import Loading from "../common/Loading";
-import ProfileActions from "./ProfileActions";
 import { AlertModal } from "../common/Modal";
 import Tab from "../common/Tabs";
 import IsEmpty from "../../validation/IsEmpty";
@@ -12,7 +11,6 @@ import SideNav from "../common/SideNav";
 
 class Dashboard extends Component {
   componentDidMount() {
-    console.log(this.props);
     this.props.getCurrentProfile();
   }
 

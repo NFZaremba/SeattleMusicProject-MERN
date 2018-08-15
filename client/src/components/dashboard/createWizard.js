@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { getCurrentProfile } from "../../actions/profileActions";
-import Loading from "../common/Loading";
-import ProfileActions from "./ProfileActions";
 import StepperInfo from "../common/Stepper";
 import SideNav from "../common/SideNav";
 
@@ -14,7 +12,7 @@ class CreateWizard extends Component {
 
   render() {
     const { user } = this.props.user;
-    const { profile, loading } = this.props.profile;
+    const { profile } = this.props.profile;
 
     let wizardContent;
 

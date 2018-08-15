@@ -54,11 +54,11 @@ export const createProfile = (profileData, success) => dispatch => {
   axios
     .post("/api/profile", profileData)
     .then(res => {
-      success,
-        dispatch({
-          type: GET_PROFILE,
-          payload: res.data // the actual profile
-        });
+      success;
+      dispatch({
+        type: GET_PROFILE,
+        payload: res.data // the actual profile
+      });
     })
     .catch(err =>
       dispatch({

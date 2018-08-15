@@ -7,7 +7,6 @@ import { Icon } from "semantic-ui-react";
 
 class ProfileItem extends Component {
   render() {
-    console.log("test");
     const { profile } = this.props;
 
     return (

@@ -18,6 +18,7 @@ import Profile from "./components/profile/Profile";
 import Profiles from "./components/profile/Profiles";
 import Posts from "./components/post/Posts";
 import CommentPost from "./components/comment/CommentPost";
+import CommingSoon from "./components/users/CommingSoon";
 import NotFound from "./components/users/NotFound";
 
 import { clearCurrentProfile } from "./actions/profileActions";
@@ -55,6 +56,8 @@ class App extends Component {
               <Route exact path="/" component={Landing} />
               <Route exact path="/profile/:handle" component={Profile} />
               <Route exact path="/profiles" component={Profiles} />
+              <Route exact path="/events" component={CommingSoon} />
+              <Route exact path="/artist" component={CommingSoon} />
               <PrivateRoute
                 exact
                 path="/dashboard"

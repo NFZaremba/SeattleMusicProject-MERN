@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { logoutUser } from "../../actions/authActions";
@@ -38,25 +38,35 @@ class SideNav extends Component {
           visible
           width="thin"
         >
-          <Menu.Item as="a" href="/artist">
-            <Icon name="user circle" />
-            Artists
+          <Menu.Item as="a">
+            <Link to="/artist">
+              <Icon name="user circle" size="big" />
+              <div>Events</div>
+            </Link>
           </Menu.Item>
-          <Menu.Item as="a" href="/events">
-            <Icon name="calendar alternate outline" />
-            Events
+          <Menu.Item as="a">
+            <Link to="/events">
+              <Icon name="calendar alternate outline" size="big" />
+              <div>Events</div>
+            </Link>
           </Menu.Item>
-          <Menu.Item as="a" href="/profiles">
-            <Icon name="address book" />
-            Profiles
+          <Menu.Item as="a">
+            <Link to="/profiles">
+              <Icon name="address book" size="big" />
+              <div>Profiles</div>
+            </Link>
           </Menu.Item>
-          <Menu.Item as="a" href="/feed">
-            <Icon name="comment alternate" />
-            Post Feed
+          <Menu.Item as="a">
+            <Link to="/feed">
+              <Icon name="comment alternate" size="big" />
+              <div>Post Feed</div>
+            </Link>
           </Menu.Item>
-          <Menu.Item as="a" href="/dashboard">
-            <Icon name="home" />
-            Dashboard
+          <Menu.Item as="a">
+            <Link to="/dashboard">
+              <Icon name="home" size="big" />
+              <div>Dashboard</div>
+            </Link>
           </Menu.Item>
           <Menu.Item as="a" onClick={this.onLogoutClick.bind(this)}>
             <Icon name="log out" />
