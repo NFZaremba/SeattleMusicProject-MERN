@@ -6,13 +6,10 @@ import { GET_ERRORS, SET_CURRENT_USER } from "./actionTypes";
 
 // Register User
 // Async data: wait for backend response and then dispatch
-export const registerUser = (newUser, history) => dispatch => {
+export const registerUser = (newUser, success) => dispatch => {
   axios
     .post("/api/users/register", newUser)
-    .then(res => {
-      console.log("Success");
-      //TODO SendGrid
-    })
+    .then(success)
     .catch(err =>
       // dispatch errors to reducer to be accessed from the redux state
       dispatch({
@@ -77,6 +74,7 @@ export const setCurrentUser = decoded => {
 
 // Log User Out
 export const logoutUser = history => dispatch => {
+  history.push("/");
   window.location.href = "/";
   // Remove token from localStorage
   localStorage.removeItem("jwtToken");

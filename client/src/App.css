@@ -93,6 +93,10 @@ div.pushable {
 }
 
 .postCard,
+.cardHead {
+  background-color: #f1f1f1d7;
+}
+
 .commentCard {
-  background-color: #17a2b8;
+  background-color: #a3a3a3ee;
 }

@@ -43,7 +43,7 @@ class PostItem extends Component {
             <Icon size="huge" name="user circle" />
           </div>
           <div className="col-md-10">
-            <p className="lead">{post.text}</p>
+            <p className="lead card card-body">{post.text}</p>
             {showActions ? (
               <span>
                 <button

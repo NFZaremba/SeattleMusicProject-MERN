@@ -48,19 +48,19 @@ class Music extends Component {
     return (
       <div className="row">
         <div className="col-md-6">
-          <h3 className="text-center text-info">Favorite Music</h3>
+          <h3 className="text-center text-white">Favorite Music</h3>
           {musicItems.length > 0 ? (
             <ul className="list-group">{musicItems}</ul>
           ) : (
-            <p className="text-center">No Favorite Music Listed</p>
+            <p className="text-center text-white">No Favorite Music Listed</p>
           )}
         </div>
         <div className="col-md-6">
-          <h3 className="text-center text-info">Band</h3>
+          <h3 className="text-center text-white">Band</h3>
           {bandName.length > 0 ? (
             <ul className="list-group">{bandName}</ul>
           ) : (
-            <p className="text-center">No Band Listed</p>
+            <p className="text-center text-white">No Band Listed</p>
           )}
         </div>
       </div>

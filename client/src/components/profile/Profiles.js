@@ -48,7 +48,10 @@ class Profiles extends Component {
           <SideNav />
         </div>
         <div className="row">
-          <div className="col-md-10">
+          <div
+            className="col-md-10"
+            style={{ overflowY: "auto", fontSize: "14px" }}
+          >
             <h1 className="display-4 text-center" style={{ color: "white" }}>
               Seattle Music Member Profiles
             </h1>
