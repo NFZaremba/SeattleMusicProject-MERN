@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { deletePost, addLike, removeLike } from "../../actions/postActions";
 
 class PostItem extends Component {
-  onDelete(id) {
+  onDeleteClick(id) {
     this.props.deletePost(id);
   }
 
@@ -30,7 +30,7 @@ class PostItem extends Component {
 
   render() {
     const { post, user, showActions } = this.props;
-    console.log(post);
+
     return (
       <div className="card card-body mb-3">
         <div className="row">
@@ -92,6 +92,10 @@ class PostItem extends Component {
     );
   }
 }
+
+PostItem.defaultProps = {
+  showActions: true
+};
 
 PostItem.propTypes = {
   deletePost: PropTypes.func.isRequired,

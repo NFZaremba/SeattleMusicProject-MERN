@@ -53,7 +53,8 @@ img {
 .dashboard,
 .creatWizard,
 .profile,
-.profiles {
+.profiles,
+.feed {
   position: relative;
   background: linear-gradient(
       0deg,

@@ -33,11 +33,6 @@ class CreateWizard extends Component {
         paddingLeft: "0",
         float: "left",
         height: "160vh"
-      },
-      dashboardContent: {
-        paddingTop: "20px",
-        paddingRight: "20px",
-        float: "right"
       }
     };
 
